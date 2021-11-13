@@ -1,0 +1,7 @@
+<?xml version= "1.0" encoding="UTF-8" ?>
+<GetCourseDetailsRequest xmlns = "http://springboot.com/courses"
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation = "http://springboot.com/courses  course-details.xsd"
+>
+    <id>11</id>
+</GetCourseDetailsRequest>
