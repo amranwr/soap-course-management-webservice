@@ -28,6 +28,20 @@
             </sequence>
         </complexType>
     </element>
+    <element name="DeleteCourseDetailsRequest">
+        <complexType>
+            <sequence>
+                <element name="id" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="DeleteCourseDetailsResponse">
+        <complexType>
+            <sequence>
+                <element name="status" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
     <complexType name="CourseDetails">
         <sequence>
             <element name="id" type="int"></element>

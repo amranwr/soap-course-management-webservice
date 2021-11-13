@@ -32,11 +32,11 @@ public class CourseDetailsService {
         }
     }
 
-    public int deleteCourse(Course course){
+    public int deleteCourse(int id){
         Iterator iterator = this.courses.iterator();
         while(iterator.hasNext()){
             Course course1 =(Course) iterator.next();
-            if(course1.getId() == course.getId()){
+            if(course1.getId() == id){
                 iterator.remove();
                 return 1;
             }
