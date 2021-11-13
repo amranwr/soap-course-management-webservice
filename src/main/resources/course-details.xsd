@@ -38,10 +38,16 @@
     <element name="DeleteCourseDetailsResponse">
         <complexType>
             <sequence>
-                <element name="status" type="int"></element>
+                <element name="status" type="tns:status"></element>
             </sequence>
         </complexType>
     </element>
+    <simpleType name="status">
+        <restriction base="string">
+            <enumeration value="SUCCESS"/>
+            <enumeration value="FALIUR"/>
+        </restriction>
+    </simpleType>
     <complexType name="CourseDetails">
         <sequence>
             <element name="id" type="int"></element>

@@ -10,6 +10,9 @@ import java.util.Optional;
 
 @Service
 public class CourseDetailsService {
+    public enum StatusBean{
+        SUCCESS,FALIUR
+    }
     List<Course> courses;
     public CourseDetailsService(){
         courses = new ArrayList<>();
@@ -32,16 +35,16 @@ public class CourseDetailsService {
         }
     }
 
-    public int deleteCourse(int id){
+    public StatusBean deleteCourse(int id){
         Iterator iterator = this.courses.iterator();
         while(iterator.hasNext()){
             Course course1 =(Course) iterator.next();
             if(course1.getId() == id){
                 iterator.remove();
-                return 1;
+                return StatusBean.SUCCESS;
             }
         }
-        return 0;
+        return StatusBean.FALIUR;
     }
 
 }

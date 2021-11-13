@@ -38,10 +38,14 @@ public class CourseDetailsEndPoint {
     @ResponsePayload
     public DeleteCourseDetailsResponse getAllCourses(@RequestPayload DeleteCourseDetailsRequest req){
         DeleteCourseDetailsResponse res = new DeleteCourseDetailsResponse();
-        res.setStatus(courseDetailsService.deleteCourse(req.getId()));
+        CourseDetailsService.StatusBean statusBean = courseDetailsService.deleteCourse(req.getId());
+        res.setStatus(mapStatus(statusBean));
         return res;
     }
-
+    public Status mapStatus(CourseDetailsService.StatusBean statusBean){
+        if(statusBean.toString().equals(Status.SUCCESS.toString()))return Status.SUCCESS;
+        return Status.FALIUR;
+    }
     public CourseDetails mapCourseToCourseDetails(Course course){
         CourseDetails courseDetails = new CourseDetails();
         courseDetails.setId(course.getId());
