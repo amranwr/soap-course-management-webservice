@@ -3,6 +3,17 @@
         targetNamespace="http://springboot.com/courses"
         xmlns:tns = "http://springboot.com/courses"
         elementFormDefault="qualified">
+    <element name="GetAllCourseDetailsRequest">
+        <complexType>
+        </complexType>
+    </element>
+    <element name="GetAllCourseDetailsResponse">
+        <complexType>
+            <sequence>
+                <element type="tns:CourseDetails" name="CourseDetails" maxOccurs="unbounded"></element>
+            </sequence>
+        </complexType>
+    </element>
     <element name="GetCourseDetailsRequest">
         <complexType>
             <sequence>

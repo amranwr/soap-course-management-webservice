@@ -1,33 +1,47 @@
 package com.springboot.coursessoapwebservices.services;
 
-import com.springboot.courses.CourseDetails;
+import com.springboot.coursessoapwebservices.models.Course;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CourseDetailsService {
-    List<CourseDetails> courses;
+    List<Course> courses;
     public CourseDetailsService(){
         courses = new ArrayList<>();
-        courses.add(CourseDetails.builder().id(1).name("amr").description("hello there").build());
-        courses.add(CourseDetails.builder().id(2).name("amr").description("hello there").build());
-        courses.add(CourseDetails.builder().id(3).name("amr").description("hello there").build());
-        courses.add(CourseDetails.builder().id(4).name("amr").description("hello there").build());
-        courses.add(CourseDetails.builder().id(5).name("amr").description("hello there").build());
+        courses.add(Course.builder().id(1).name("amr").description("hello there").build());
+        courses.add(Course.builder().id(2).name("amr").description("hello there").build());
+        courses.add(Course.builder().id(3).name("amr").description("hello there").build());
+        courses.add(Course.builder().id(4).name("amr").description("hello there").build());
+        courses.add(Course.builder().id(5).name("amr").description("hello there").build());
     }
-    public List<CourseDetails> findAll(){
+    public List<Course> findAll(){
         return this.courses;
     }
 
-    public CourseDetails findById(int id ){
-        Optional<CourseDetails> courseDetails = this.courses.stream().filter(course -> course.getId()== id).findFirst();
-        if(courseDetails.isPresent()){
-            return courseDetails.get();
+    public Course findById(int id ){
+        Optional<Course> courseOptional = this.courses.stream().filter(course -> course.getId()== id).findFirst();
+        if(courseOptional.isPresent()){
+            return courseOptional.get();
         }else {
             return null;
         }
     }
+
+    public int deleteCourse(Course course){
+        Iterator iterator = this.courses.iterator();
+        while(iterator.hasNext()){
+            Course course1 =(Course) iterator.next();
+            if(course1.getId() == course.getId()){
+                iterator.remove();
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }
